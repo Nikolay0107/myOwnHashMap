@@ -1,8 +1,9 @@
 package my.own.hash.map;
 
-import sun.security.mscapi.CPublicKey;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
+
 
 public class HashMapImplementation {
 
@@ -46,12 +47,12 @@ public class HashMapImplementation {
     public Value get(Key key) {
         int ix = getIndex(key) % hashMap.length;
 
-        if (hashMap[ix] == null) return null;
-
+        if (hashMap[ix] == null) throw new NoSuchElementException();
         for (Entry entry : hashMap[ix]) {
             if (entry.key.equals(key)) {
                 return entry.value;
             }
+
         }
         return null;
 
@@ -71,10 +72,13 @@ public class HashMapImplementation {
         }
     }
 
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
     public int getIndex(Key key) {
         return key.hashCode();
     }
-
 
 
     public int size() {

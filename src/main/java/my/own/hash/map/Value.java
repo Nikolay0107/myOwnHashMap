@@ -1,7 +1,5 @@
 package my.own.hash.map;
 
-import java.util.Objects;
-
 public class Value {
     private long value;
 
@@ -20,4 +18,7 @@ public class Value {
         Value value1 = (Value) o;
         return value == value1.value;
     }
+
+
+    
 }
